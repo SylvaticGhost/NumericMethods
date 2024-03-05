@@ -1,8 +1,9 @@
-import json
+from sympy import Symbol, sin, pi, cos, tan
 
-array = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+alpha = Symbol('\u03B1')
+beta = Symbol('\u03B2')
+n = Symbol('n')
+f = sin(alpha) + cos(alpha/2) + tan(beta) + 2*pi*n
 
-# Convert the 2D array to a JSON string
-json_str = json.dumps(array)
+print(f)
 
-print("JSON string representation of the array: ", json_str)
