@@ -1,6 +1,6 @@
-﻿using System.Text;
+using System.Text;
 
-namespace Labwork2;
+namespace LabWork3;
 
 public class Matrix
 {
@@ -53,6 +53,26 @@ public class Matrix
         Matrix matrix = new (col);
         matrix.Transpose();
         return matrix;
+    }
+
+
+    public static Matrix CreateZeroMatrix(int rows, int columns)
+    {
+        List<List<double>> cont = [];
+        
+        for (int i = 0; i < rows; i++)
+        {
+            List<double> row = [];
+            
+            for (int j = 0; j < columns; j++)
+            {
+                row.Add(0);
+            }
+            
+            cont.Add(row);
+        }
+        
+        return new Matrix(cont);
     }
 
 
@@ -152,7 +172,8 @@ public class Matrix
         return res;
     }
     
-    public static Matrix operator+(Matrix A, Matrix B)
+    
+    public static Matrix operator +(Matrix A, Matrix B)
     {
         Matrix res = A.Copy();
 
@@ -294,5 +315,16 @@ public class Matrix
         }
 
         return res;
+    }
+    
+    
+    public Matrix GetDiagonalMatrix()
+    {
+        Matrix matrix = CreateZeroMatrix(NumberOfRows, NumberOfColumns);
+
+        for(int i = 0; i < NumberOfRows; i++)
+            matrix[i][i] = this[i][i];
+
+        return matrix;
     }
 }
