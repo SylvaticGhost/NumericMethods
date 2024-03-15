@@ -115,23 +115,7 @@ public class Matrix
 
     public Matrix Copy() => new (
         Containing.Select(row => new List<double>(row)).ToList());
-
-
-    public Matrix GetMatrixWithReversedRow()
-    {
-        List<List<double>> cont = [];
-
-        for (int i = NumberOfRows - 1; i >= 0; i--)
-        {
-            var row = new List<double>(Containing[i]);
-            row.Reverse();
-            cont.Add(row);
-        }
-
-        return new Matrix(cont);
-    }
-
-
+    
 
     public static Matrix operator *(Matrix A, Matrix B)
     {
@@ -215,96 +199,8 @@ public class Matrix
 
         return result.ToString();
     }
-
-
-    public void MultiplyOnNumber(double n)
-    {
-        for(int i = 0; i < NumberOfRows; i++)
-        {
-            for(int j = 0; j < NumberOfColumns; j++)
-            {
-                this[i][j] *= n;
-            }
-        }
-    }
-
-
-    public Matrix GetInverse()
-    {
-        double det = this.Determinant();
-
-        List<List<double>> cont = [];
-
-        for(int i = 0; i < NumberOfRows; i++)
-        {
-            List<double> row = [];
-
-            for(int j = 0; j < NumberOfColumns; j++)
-            {
-                row.Add(CalculateMinor(i, j));  
-            }
-
-            cont.Add(row);
-        }
-
-        Matrix s = new (cont);
-
-        s.Transpose();
-
-        s.MultiplyOnNumber(1 / det);
-
-        return s;
-    }
-
-
-    public double Determinant()
-    {
-        if (NumberOfRows != NumberOfColumns)
-            throw new Exception("Matrix must be square to find the determinant.");
-
-        // For a 2x2 matrix, the determinant is calculated as ad - bc
-        if (NumberOfRows == 2)
-            return (Containing[0][0] * Containing[1][1]) - (Containing[0][1] * Containing[1][0]);
-        
-        double determinant = 0;
-
-        for (int j = 0; j < NumberOfColumns; j++)
-        {
-            determinant += Containing[0][j] * CalculateMinor(0, j);
-        }
-
-        return determinant;
-    }
-
-    private double CalculateMinor(int row, int column)
-    {
-        // Calculate the cofactor of a specific element in the matrix
-        List<List<double>> subMatrix = [];
-
-        for (int i = 0; i < NumberOfRows; i++)
-        {
-            if (i != row)
-            {
-                List<double> subRow = [];
-
-                for (int j = 0; j < NumberOfColumns; j++)
-                {
-                    if (j != column)
-                    {
-                        subRow.Add(Containing[i][j]);
-                    }
-                }
-
-                subMatrix.Add(subRow);
-            }
-        }
-
-        Matrix subMatrixObj = new (subMatrix);
-
-        return Math.Pow(-1, row + column) * subMatrixObj.Determinant();
-    }
-
-
+    
+    
     public List<double> GetAllNumbersInLine()
     {
         List<double> res = [];
@@ -317,14 +213,4 @@ public class Matrix
         return res;
     }
     
-    
-    public Matrix GetDiagonalMatrix()
-    {
-        Matrix matrix = CreateZeroMatrix(NumberOfRows, NumberOfColumns);
-
-        for(int i = 0; i < NumberOfRows; i++)
-            matrix[i][i] = this[i][i];
-
-        return matrix;
-    }
 }
