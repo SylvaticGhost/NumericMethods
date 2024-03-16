@@ -34,7 +34,9 @@ Console.ForegroundColor = ConsoleColor.DarkBlue;
 Console.WriteLine("Solving by Jacobi method:");
 Console.ResetColor();
 
-numericMethods.SolveByJacobi(beta, x, epsilon);
+var ans = numericMethods.SolveByJacobi(beta, x, epsilon);
+PrintWordAnswer();
+ans.ForEach(Console.WriteLine);
 
 Console.WriteLine();
 
@@ -42,7 +44,7 @@ Console.ForegroundColor = ConsoleColor.DarkBlue;
 Console.WriteLine("Solving by Seidel method:");
 Console.ResetColor();
 
-var ans = numericMethods.SolveBySeidel();
+ans = numericMethods.SolveBySeidel();
 
 PrintWordAnswer();
 ans.ForEach(Console.WriteLine);

@@ -2,6 +2,7 @@ namespace LabWork3;
 
 public class DataProvider
 {
+    public readonly double Epsilon = 0.0000001;
     
     public readonly List<List<double>> ContainingA =
     [
@@ -12,6 +13,16 @@ public class DataProvider
     ];
     
     public readonly List<double> ContainingB = [1.16439759, -2.44753012, 44.16271084, -5.51427711];
-    
-    public readonly double Epsilon = 0.0000001;
+
+    //public readonly List<List<double>> ContainingA =
+    // [
+    //     [10.39, 2.45, 3.35, 2.28],
+    //     [0, 6.027883, -0.732079, -0.125],
+    //     [0, 0.789, 4.854, -0.0037],
+    //     [0, -0.648, 0.051, 0.913]
+    // ];
+    //
+    // public readonly List<double> ContainingB = [11.48, -3.487, 4.983, 0.000298];
+    //
+    // 
 }

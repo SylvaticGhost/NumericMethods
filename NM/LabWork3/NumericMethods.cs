@@ -43,8 +43,6 @@ public class NumericMethods
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("Iterations: " + iterations);
         Console.ResetColor();
-        PrintWordAnswer();
-        x.Print();
         
         return xNew.GetColumn(0);
     }
@@ -103,18 +101,10 @@ public class NumericMethods
     {
         Console.WriteLine("iterations: " + iterations);
         Console.WriteLine("Vector x:");
-        x.Print();
+        x.PrintInOneLine();
         Console.WriteLine();
     }
     
-    
-    static void PrintWordAnswer()
-    {
-        Console.ForegroundColor = ConsoleColor.DarkYellow;
-        Console.WriteLine("Answer:");
-        Console.ResetColor();
-    }
-
 
     void PrintUnpackVectorOnIterations(ref Matrix x, int iteration)
     {
@@ -124,7 +114,7 @@ public class NumericMethods
         Matrix unpackVector = b - (A * x);
 
         Console.WriteLine($"Unpack vector on {iteration} iteration");
-        unpackVector.Print();
+        unpackVector.PrintInOneLine();
         Console.WriteLine();
     }
 }

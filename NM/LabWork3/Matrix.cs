@@ -110,6 +110,19 @@ public class Matrix
     }
 
 
+    public void PrintInOneLine()
+    {
+        foreach (var row in Containing)
+        {
+            foreach (var e in row)
+            {
+                Console.Write(e + "\t ");
+            }
+        }
+        Console.Write("\n");
+    }
+
+
     public List<double> GetColumn(int i) => Containing.Select(row => row[i]).ToList();
 
 
