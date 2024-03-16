@@ -4,7 +4,7 @@ DataProvider dataProvider = new ();
 
 Matrix A = new (dataProvider.ContainingA);
 
-Matrix B = new (dataProvider.ContainingB);
+Matrix B = Matrix.CreateMatrixByColumn(dataProvider.ContainingB);
 
 double epsilon = dataProvider.Epsilon;
 
@@ -27,23 +27,22 @@ Console.WriteLine("x:");
 x.ForEach(Console.WriteLine);
 Console.WriteLine();
 
+NumericMethods numericMethods = new NumericMethods(A, B, epsilon);
+
 
 Console.ForegroundColor = ConsoleColor.DarkBlue;
-Console.WriteLine("Solved by Jacobi method:");
+Console.WriteLine("Solving by Jacobi method:");
 Console.ResetColor();
 
-List<double> ans = NumericMethods.SolveByJacobi(beta, x, epsilon);
-
-PrintWordAnswer();
-ans.ForEach(Console.WriteLine);
+numericMethods.SolveByJacobi(beta, x, epsilon);
 
 Console.WriteLine();
 
 Console.ForegroundColor = ConsoleColor.DarkBlue;
-Console.WriteLine("Solved by Seidel method:");
+Console.WriteLine("Solving by Seidel method:");
 Console.ResetColor();
 
-ans = NumericMethods.SolveBySeidel(A, B.GetAllNumbersInLine(), epsilon);
+var ans = numericMethods.SolveBySeidel();
 
 PrintWordAnswer();
 ans.ForEach(Console.WriteLine);

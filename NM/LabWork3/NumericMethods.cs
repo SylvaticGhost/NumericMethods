@@ -1,8 +1,22 @@
 namespace LabWork3;
 
-public static class NumericMethods
+public class NumericMethods
 {
-    public static List<double> SolveByJacobi(Matrix beta, List<double> bList, double epsilon)
+    private Matrix A;
+
+    private Matrix b;
+
+    private readonly double epsilon;
+
+    public NumericMethods(Matrix matrixA, Matrix matrixB, double epsilon)
+    {
+        A = matrixA;
+        b = matrixB;
+        this.epsilon = epsilon;
+    }
+    
+    
+    public List<double> SolveByJacobi(Matrix beta, List<double> bList, double epsilon)
     {
         Matrix x = Matrix.CreateMatrixByColumn(bList);
         
@@ -14,24 +28,31 @@ public static class NumericMethods
         
         while(!Operations.CalculateNorm(x, xNew, epsilon))
         {
+            if (iterations is > 0 and <= 3)
+            {
+                PrintResultOnIterations(x, iterations);
+            }
+            PrintUnpackVectorOnIterations(ref x, iterations);
+            
             x = xNew;
             xNew = beta * x + b;
             iterations++;
         }
-
+        PrintUnpackVectorOnIterations(ref x, iterations);
+        Console.WriteLine();
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("Iterations: " + iterations);
         Console.ResetColor();
+        PrintWordAnswer();
+        x.Print();
         
         return xNew.GetColumn(0);
     }
 
 
-    public static List<double> SolveBySeidel(Matrix A, List<double> bList, double epsilon)
+    public List<double> SolveBySeidel()
     {
-        Matrix x = Matrix.CreateZeroMatrix(bList.Count, 1);
-        
-        Matrix b = Matrix.CreateMatrixByColumn(bList);
+        Matrix x = Matrix.CreateZeroMatrix(b.NumberOfRows, 1);
 
         Matrix xNew = x.Copy();
 
@@ -39,6 +60,12 @@ public static class NumericMethods
         int iterations = 0;
         do
         {
+            if (iterations <= 3)
+            {
+                PrintResultOnIterations(x, iterations);
+            }
+            PrintUnpackVectorOnIterations(ref x, iterations);
+            
             xNew = x.Copy();
             for (int i = 0; i < x.NumberOfRows; i++)
             {
@@ -62,10 +89,42 @@ public static class NumericMethods
             x = xNew;
         } while (!Operations.CalculateNorm(oldX, xNew, epsilon));
         
+        PrintUnpackVectorOnIterations(ref x, iterations);
+        
         Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine("Iterations: " + iterations);
+        Console.WriteLine("Completed iterations: " + iterations);
         Console.ResetColor();
         
         return xNew.GetAllNumbersInLine();
+    }
+
+
+    private static void PrintResultOnIterations(Matrix x, int iterations)
+    {
+        Console.WriteLine("iterations: " + iterations);
+        Console.WriteLine("Vector x:");
+        x.Print();
+        Console.WriteLine();
+    }
+    
+    
+    static void PrintWordAnswer()
+    {
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.WriteLine("Answer:");
+        Console.ResetColor();
+    }
+
+
+    void PrintUnpackVectorOnIterations(ref Matrix x, int iteration)
+    {
+        if(iteration == 0)
+            return;
+        
+        Matrix unpackVector = b - (A * x);
+
+        Console.WriteLine($"Unpack vector on {iteration} iteration");
+        unpackVector.Print();
+        Console.WriteLine();
     }
 }
