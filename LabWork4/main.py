@@ -1,4 +1,5 @@
 import numpy as np
+import scipy as sp
 
 from LabWork4.Helpers import Helpers
 from LabWork4.Operations import Operations
@@ -21,7 +22,7 @@ class Program:
 
      def Solve(self):
           print("Вихідна матриця A = ")
-          print(self.A)
+          Helpers.print_matrix(self.A)
           Aw = copy(self.A)
 
           Ms = []
@@ -29,6 +30,8 @@ class Program:
 
           i = size - 1
           j = size - 2
+
+          index = size - 1
 
           while i >= 1 and j >= 0:
                if self.A[i][j] == 0:
@@ -42,9 +45,10 @@ class Program:
                          M[j][k] = - Aw[i][k] / Aw[i][j]
                     M_inverse[j][k] = Aw[i][k]
 
-               print("M = ")
-               print(M)
-               print("\n")
+               print(f"матриця M{i} = ")
+               Helpers.print_matrix(M)
+               print(f"Обернена матриця M{i} = ")
+               Helpers.print_matrix(M_inverse)
                Ms.append(M)
 
                Aw = Operations.multiply_matrix(M_inverse, Aw)
@@ -52,11 +56,11 @@ class Program:
 
                i -= 1
                j -= 1
-               print("A on iteration = ")
+               print(f'A{i + 1}=')
                Helpers.print_matrix(Aw)
-               print("\n")
+               index -= 1
 
-          print("Матриця після перетворень = ")
+          print("Матриця після перетворень у нормальній формі Фробеніуса= ")
           Helpers.print_matrix(Aw)
 
           print('Знаходження власних чисел матриці A = ')
@@ -65,6 +69,8 @@ class Program:
           v.reverse()
           v = Operations.multiply_vector(v, -1)
           v.append(1)
+
+          Helpers.print_equation(v)
 
           print("Вектор v = ")
           print(v)
@@ -101,14 +107,12 @@ class Program:
                print(f"Вектор x{i + 1} = ")
                print(xi)
                xs.append(xi)
-               print("\n")
 
                p1 = np.dot(self.A, xi)
                p2 = np.dot(λ[i], xi)
                p = p1 - p2
                print(f"Перевірка #{i + 1}= ")
                print(p)
-               print("\n")
 
           return λ, xs
 
