@@ -1,0 +1,15 @@
+/Users/Kostia/Documents/GitHub/NumericMethods/NM/LabWork3/bin/Debug/net8.0/LabWork3
+/Users/Kostia/Documents/GitHub/NumericMethods/NM/LabWork3/bin/Debug/net8.0/LabWork3.deps.json
+/Users/Kostia/Documents/GitHub/NumericMethods/NM/LabWork3/bin/Debug/net8.0/LabWork3.runtimeconfig.json
+/Users/Kostia/Documents/GitHub/NumericMethods/NM/LabWork3/bin/Debug/net8.0/LabWork3.dll
+/Users/Kostia/Documents/GitHub/NumericMethods/NM/LabWork3/bin/Debug/net8.0/LabWork3.pdb
+/Users/Kostia/Documents/GitHub/NumericMethods/NM/LabWork3/obj/Debug/net8.0/LabWork3.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Kostia/Documents/GitHub/NumericMethods/NM/LabWork3/obj/Debug/net8.0/LabWork3.AssemblyInfoInputs.cache
+/Users/Kostia/Documents/GitHub/NumericMethods/NM/LabWork3/obj/Debug/net8.0/LabWork3.AssemblyInfo.cs
+/Users/Kostia/Documents/GitHub/NumericMethods/NM/LabWork3/obj/Debug/net8.0/LabWork3.csproj.CoreCompileInputs.cache
+/Users/Kostia/Documents/GitHub/NumericMethods/NM/LabWork3/obj/Debug/net8.0/LabWork3.sourcelink.json
+/Users/Kostia/Documents/GitHub/NumericMethods/NM/LabWork3/obj/Debug/net8.0/LabWork3.dll
+/Users/Kostia/Documents/GitHub/NumericMethods/NM/LabWork3/obj/Debug/net8.0/refint/LabWork3.dll
+/Users/Kostia/Documents/GitHub/NumericMethods/NM/LabWork3/obj/Debug/net8.0/LabWork3.pdb
+/Users/Kostia/Documents/GitHub/NumericMethods/NM/LabWork3/obj/Debug/net8.0/LabWork3.genruntimeconfig.cache
+/Users/Kostia/Documents/GitHub/NumericMethods/NM/LabWork3/obj/Debug/net8.0/ref/LabWork3.dll
