@@ -5,7 +5,7 @@ from LabWork5.SolveEquation import SolveEquation
 from LabWork5.SturmTheorem import SturmTheorem
 
 ai = [3, 0, 0, -1, -3, 2]
-#ai = [1, -5, -6]
+
 a = 2
 k = 4
 ai[0] += a
@@ -14,6 +14,7 @@ epsilon = 0.000001
 
 print('вихідний набір коефіцієнтів = ', ai)
 
+print("Рівняння:")
 print(Helpers.print_equation(ai))
 
 a, b = Helpers.find_root_bounds(ai)
@@ -32,16 +33,16 @@ if number_of_roots == 0:
 solveEquation = SolveEquation(ai, a, b)
 
 print("Програмний розв'язок:")
-solution_bisection = solveEquation.bisection_method(epsilon)
-print(f"Розв'язок методом бісекції: {solution_bisection}")
+solution_bisection, i = solveEquation.bisection_method(epsilon)
+print(f"Розв'язок методом бісекції: {solution_bisection}, Кількість ітерацій: {i}")
 
-solution_chord = solveEquation.chord_method(epsilon)
-print(f"Розв'язок методом хорд: {solution_chord}")
+solution_chord, i = solveEquation.chord_method(epsilon)
+print(f"Розв'язок методом хорд: {solution_chord}, Кількість ітерацій: {i}")
 
-solution_newton = solveEquation.newton_method(epsilon)
-print(f"Розв'язок методом Ньютона: {solution_newton}\n")
+solution_newton, i = solveEquation.newton_method(epsilon)
+print(f"Розв'язок методом Ньютона: {solution_newton}, Кількість ітерацій: {i}\n")
 
-print("\nБібліотечний розв'язок:")
+print("\nРозв'язок з використанням мат. пакету:")
 roots = np.roots(ai)
 print(roots)
 roots_real = roots[np.isreal(roots)]

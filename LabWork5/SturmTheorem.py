@@ -5,7 +5,6 @@ class SturmTheorem:
     def __init__(self, polynom):
         self.f = polynom
 
-
     def theorem(self, a, b):
         """
         :param a: left border of the interval

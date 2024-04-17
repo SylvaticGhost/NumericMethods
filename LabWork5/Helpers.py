@@ -27,16 +27,6 @@ class Helpers:
 
     @staticmethod
     def find_root_bounds(coefficients):
-        """
-        Finds the bounds for all roots of a polynomial equation.
-
-        Args:
-            coefficients: A list of coefficients of the polynomial in decreasing order.
-
-        Returns:
-            tuple: A tuple containing the lower and upper bounds of the roots.
-        """
-
         a_max = np.max(np.abs(coefficients[:-1]))
         b_max = np.max(np.abs(coefficients[1:]))
         lower_bound = -np.sqrt(float(float(b_max) / coefficients[0]))
