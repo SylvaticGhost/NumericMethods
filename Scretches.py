@@ -1,14 +1,2 @@
-from sympy import symbols, CRootOf
-
-# Define the variable
-x = symbols('x')
-
-# Define the polynomial equation
-equation = 5*x**5 - x**2 - 3*x + 6
-
-# Get the roots
-roots = [CRootOf(equation, i) for i in range(5)]
-
-# Print the numerical values of the roots
-for root in roots:
-    print(root.evalf())
+n = 1/3 * 1/3 * (0.693147180559945 +0.767528364331349 + 4 * (0.766238435648986 + 0.804718956217050 + 0.784963073929564) + 2*(0.797481568367965 + 0.798522185661514))
+print(n)
