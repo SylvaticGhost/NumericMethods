@@ -1,5 +1,3 @@
-import math
-
 import numpy as np
 import sympy as sp
 from scipy.integrate import quad
@@ -7,8 +5,10 @@ from LabWork7.simpsonMethod import solve_simpson
 from LabWork7.gaussMethod import solve_gauss
 from LabWork7.helpers import show_error
 
+
 def f(x):
     return (sp.log(x**2 + 1))/x
+
 
 a = 1
 b = 3

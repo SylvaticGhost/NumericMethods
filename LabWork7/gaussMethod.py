@@ -1,7 +1,7 @@
 import sympy as sp
 import scipy.optimize as opt
 
-from LabWork7.helpers import factorial, build_graphic
+from LabWork7.helpers import factorial, build_graphic, find_max_value
 
 
 def solve_gauss(f, a, b, epsilon):
@@ -42,11 +42,11 @@ def _calculate_at_i_derivative(f, a, b, m, i, epsilon):
     f_i = sp.lambdify(x, f_i)
 
     mx = opt.minimize_scalar(lambda x: f_i(x), bounds=(a, b), method='bounded').fun
-    max_value = abs(mx)
+    max_value = find_max_value(f_i, a, b, epsilon)
     print(f'максимальне значення {i}-ої похідної за модулем : ', max_value)
 
 
-    build_graphic(f_i, a, b, mx, f'Графік {i}-ої похідної функції')
+    build_graphic(f_i, a, b,f'Графік {i}-ої похідної функції')
 
     d_analytical = _d_analytical(a, b, m, max_value)
     result = d_analytical < epsilon

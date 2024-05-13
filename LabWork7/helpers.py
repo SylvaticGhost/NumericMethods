@@ -6,7 +6,7 @@ def factorial(n):
     else:
         return n * factorial(n - 1)
 
-def build_graphic(f, a, b, max_value, title = 'Графік функції'):
+def build_graphic(f, a, b, title = 'Графік функції'):
     import matplotlib.pyplot as plt
 
     x = np.linspace(a, b, 1000)
@@ -14,7 +14,6 @@ def build_graphic(f, a, b, max_value, title = 'Графік функції'):
 
     plt.plot(x, y)
     plt.title(title)
-    plt.axhline(y=max_value, color='r', linestyle='--')
     plt.show()
 
 
@@ -29,3 +28,14 @@ def show_error(my_value, ethalon_value, d_analytical, epsilon):
         print('Реальна похибка більша за аналітичну')
     else:
         print('Точність дотримана')
+
+
+def find_max_value(func, a, b, epsilon):
+    max = 0
+    t = a
+    while t <= b:
+        if abs(func(t)) > max:
+            max = abs(func(t))
+        t += epsilon*0.01
+
+    return max
