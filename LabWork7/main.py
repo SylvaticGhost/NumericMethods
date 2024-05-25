@@ -10,8 +10,8 @@ def f(x):
     return (sp.log(x**2 + 1))/x
 
 
-a = 1
-b = 3
+a = 1.4
+b = 2.1
 
 epsilon = 0.0001
 
