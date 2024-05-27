@@ -17,7 +17,7 @@ def AdamsMethod(f, x_values, y_values, h, a, b, epsilon=0.00001):
     print(f'y3 = {y_values[-1]}')
 
     for k in range(3, n):
-        print('крок ', k)
+        print('крок ', k + 1)
         y_next_progn = y_values[-1] + h / 24 * (55 * f(x_values[-1], y_values[-1]) - 59 * f(x_values[-2], y_values[-2]) + 37 * f(x_values[-3], y_values[-3]) - 9 * f(x_values[-4], y_values[-4]))
         print('y_next_progn = ', y_next_progn)
         y_values.append(y_next_progn)
